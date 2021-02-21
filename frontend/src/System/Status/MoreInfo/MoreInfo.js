@@ -15,32 +15,44 @@ class MoreInfo extends Component {
     return (
       <FieldSet legend={translate('MoreInfo')}>
         <DescriptionList>
-          <DescriptionListItemTitle>Home page</DescriptionListItemTitle>
+          <DescriptionListItemTitle>
+            {translate('HomePage')}
+          </DescriptionListItemTitle>
           <DescriptionListItemDescription>
             <Link to="https://prowlarr.com/">prowlarr.com</Link>
           </DescriptionListItemDescription>
 
-          <DescriptionListItemTitle>Discord</DescriptionListItemTitle>
+          <DescriptionListItemTitle>
+            {translate('Wiki')}
+          </DescriptionListItemTitle>
+          <DescriptionListItemDescription>
+            <Link to="https://wiki.servarr.com/prowlarr">{translate('Wiki')}</Link>
+          </DescriptionListItemDescription>
+
+          <DescriptionListItemTitle>
+            {translate('Reddit')}
+          </DescriptionListItemTitle>
+          <DescriptionListItemDescription>
+            <Link to="https://www.reddit.com/r/Prowlarr/">/r/Prowlarr</Link>
+          </DescriptionListItemDescription>
+
+          <DescriptionListItemTitle>
+            {translate('Discord')}
+          </DescriptionListItemTitle>
           <DescriptionListItemDescription>
             <Link to="https://prowlarr.com/discord">prowlarr.com/discord</Link>
           </DescriptionListItemDescription>
 
-          <DescriptionListItemTitle>Wiki</DescriptionListItemTitle>
-          <DescriptionListItemDescription>
-            <Link to="https://wiki.servarr.com/Prowlarr">wiki.servarr.com/Prowlarr</Link>
-          </DescriptionListItemDescription>
-
-          <DescriptionListItemTitle>Donations</DescriptionListItemTitle>
-          <DescriptionListItemDescription>
-            <Link to="https://opencollective.com/prowlarr">opencollective.com/prowlarr</Link>
-          </DescriptionListItemDescription>
-
-          <DescriptionListItemTitle>Source</DescriptionListItemTitle>
+          <DescriptionListItemTitle>
+            {translate('Source')}
+          </DescriptionListItemTitle>
           <DescriptionListItemDescription>
             <Link to="https://github.com/Prowlarr/Prowlarr/">github.com/Prowlarr/Prowlarr</Link>
           </DescriptionListItemDescription>
 
-          <DescriptionListItemTitle>Feature Requests</DescriptionListItemTitle>
+          <DescriptionListItemTitle>
+            {translate('FeatureRequests')}
+          </DescriptionListItemTitle>
           <DescriptionListItemDescription>
             <Link to="https://github.com/Prowlarr/Prowlarr/issues">github.com/Prowlarr/Prowlarr/issues</Link>
           </DescriptionListItemDescription>
