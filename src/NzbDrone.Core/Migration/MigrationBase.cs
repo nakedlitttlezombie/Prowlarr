@@ -1,0 +1,3 @@
+namespace NzbDrone.Core.Migration
+{
+}
