@@ -287,6 +287,18 @@ namespace NzbDrone.Core.Configuration
             set { SetValue("CleanupMetadataImages", value); }
         }
 
+        public string JackettApi
+        {
+            get { return GetValue("JackettApi", string.Empty); }
+            set { SetValue("JackettApi", value); }
+        }
+
+        public string JackettPath
+        {
+            get { return GetValue("JackettPath", string.Empty); }
+            set { SetValue("JackettPath", value); }
+        }
+
         public string PlexClientIdentifier => GetValue("PlexClientIdentifier", Guid.NewGuid().ToString(), true);
 
         public string RijndaelPassphrase => GetValue("RijndaelPassphrase", Guid.NewGuid().ToString(), true);

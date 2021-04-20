@@ -84,5 +84,9 @@ namespace NzbDrone.Core.Configuration
         bool LogIndexerResponse { get; set; }
 
         CertificateValidationType CertificateValidation { get; }
+
+        // Jackett Migration
+        string JackettPath { get; set; }
+        string JackettApi { get; set; }
     }
 }
