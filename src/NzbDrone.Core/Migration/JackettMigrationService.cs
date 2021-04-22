@@ -27,17 +27,15 @@ namespace NzbDrone.Core.Migration
 
             try
             {
-                using (HttpClient client = new HttpClient())
-                using (HttpResponseMessage response = await client.GetAsync(jackettPath + url + jackettApi))
-                using (HttpContent content = response.Content)
-                {
-                    string indexerRequest = await content.ReadAsStringAsync();
+                var client = new HttpClient();
+                var response = await client.GetAsync(jackettPath + url + jackettApi);
+                var content = response.Content;
+                string indexerRequest = await content.ReadAsStringAsync();
 
-                    return new
-                    {
-                        ConfiguredIndexers = JArray.Parse(indexerRequest)
-                    };
-                }
+                return new
+                {
+                    ConfiguredIndexers = JArray.Parse(indexerRequest)
+                };
             }
             catch (Exception)
             {
