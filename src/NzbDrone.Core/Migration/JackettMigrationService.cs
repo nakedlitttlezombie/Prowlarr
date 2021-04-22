@@ -1,43 +1,53 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
-using NzbDrone.Core.Configuration;
+using Newtonsoft.Json.Linq;
+using NLog;
 
 namespace NzbDrone.Core.Migration
 {
     public interface IJackettMigrationService
     {
-        List<JackettIndexerDefinition> GetJackettIndexers();
+        global::System.Threading.Tasks.Task<object> GetJackettIndexers(string jackettPath, string jackettApi);
         void MigrateJackettIndexers(List<JackettIndexerDefinition> jackettIndexerDefinitions);
     }
 
     public class JackettMigrationService : IJackettMigrationService
     {
-        protected readonly IConfigService _configService;
-        public JackettMigrationService(IConfigService configService)
+        private readonly Logger _logger;
+        public JackettMigrationService(Logger logger)
         {
-            _configService = configService;
+            _logger = logger;
         }
 
-        public List<JackettIndexerDefinition> GetJackettIndexers()
+        public async global::System.Threading.Tasks.Task<object> GetJackettIndexers(string jackettPath, string jackettApi)
         {
-            var jackettApi = _configService.JackettApi;
-            var jackettPath = _configService.JackettPath;
-
-            const string url = "/api/v2.0/indexers?configured=true&apiKey=";
+            string url = jackettPath + "/api/v2.0/indexers?configured=true&apiKey=" + jackettApi;
 
             try
             {
-                
+                using (HttpClient client = new HttpClient())
+                using (HttpResponseMessage response = await client.GetAsync(jackettPath + url + jackettApi))
+                using (HttpContent content = response.Content)
+                {
+                    string indexerRequest = await content.ReadAsStringAsync();
+
+                    return new
+                    {
+                        ConfiguredIndexers = JArray.Parse(indexerRequest)
+                    };
+                }
             }
             catch (Exception)
             {
-                
+                return new ArrayList();
             }
         }
 
         public void MigrateJackettIndexers(List<JackettIndexerDefinition> jackettIndexerDefinitions)
         {
-            
+            //errors
         }
     }
 }
