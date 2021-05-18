@@ -12,6 +12,7 @@ import DevelopmentSettingsConnector from 'Settings/Development/DevelopmentSettin
 import DownloadClientSettingsConnector from 'Settings/DownloadClients/DownloadClientSettingsConnector';
 import GeneralSettingsConnector from 'Settings/General/GeneralSettingsConnector';
 import NotificationSettings from 'Settings/Notifications/NotificationSettings';
+import Profiles from 'Settings/Profiles/Profiles';
 import Settings from 'Settings/Settings';
 import TagSettings from 'Settings/Tags/TagSettings';
 import UISettingsConnector from 'Settings/UI/UISettingsConnector';
@@ -93,6 +94,11 @@ function AppRoutes(props) {
       <Route
         path="/settings/applications"
         component={ApplicationSettingsConnector}
+      />
+
+      <Route
+        path="/settings/profiles"
+        component={Profiles}
       />
 
       <Route

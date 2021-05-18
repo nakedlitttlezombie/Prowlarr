@@ -21,6 +21,7 @@ namespace NzbDrone.Core.Indexers
         public int Priority { get; set; } = 25;
         public bool Redirect { get; set; }
         public DateTime Added { get; set; }
+        public int ProfileId { get; set; }
 
         public IndexerStatus Status { get; set; }
 
