@@ -59,7 +59,7 @@ namespace NzbDrone.Core.Indexers.Torznab
                     torrentInfo.ImdbId = int.Parse(GetImdbId(item).Substring(2));
                 }
 
-                torrentInfo.IndexerFlags = GetFlags(item);
+                //torrentInfo.IndexerFlags = GetFlags(item);
             }
 
             return torrentInfo;
@@ -173,32 +173,31 @@ namespace NzbDrone.Core.Indexers.Torznab
             return base.GetPeers(item);
         }
 
-        protected IndexerFlags GetFlags(XElement item)
-        {
-            IndexerFlags flags = 0;
+        //protected IndexerFlags GetFlags(XElement item)
+        //{
+        //    IndexerFlags flags = 0;
 
-            var downloadFactor = TryGetFloatTorznabAttribute(item, "downloadvolumefactor", 1);
+        //    var downloadFactor = TryGetFloatTorznabAttribute(item, "downloadvolumefactor", 1);
 
-            var uploadFactor = TryGetFloatTorznabAttribute(item, "uploadvolumefactor", 1);
+        //    var uploadFactor = TryGetFloatTorznabAttribute(item, "uploadvolumefactor", 1);
 
-            if (uploadFactor == 2)
-            {
-                flags |= IndexerFlags.G_DoubleUpload;
-            }
+        //    if (uploadFactor == 2)
+        //    {
+        //        flags |= IndexerFlags.G_DoubleUpload;
+        //    }
 
-            if (downloadFactor == 0.5)
-            {
-                flags |= IndexerFlags.G_Halfleech;
-            }
+        //    if (downloadFactor == 0.5)
+        //    {
+        //        flags |= IndexerFlags.G_Halfleech;
+        //    }
 
-            if (downloadFactor == 0.0)
-            {
-                flags |= IndexerFlags.G_Freeleech;
-            }
+        //    if (downloadFactor == 0.0)
+        //    {
+        //        flags |= IndexerFlags.G_Freeleech;
+        //    }
 
-            return flags;
-        }
-
+        //    return flags;
+        //}
         protected string TryGetTorznabAttribute(XElement item, string key, string defaultValue = "")
         {
             var attr = item.Elements(ns + "attr").FirstOrDefault(e => e.Attribute("name").Value.Equals(key, StringComparison.CurrentCultureIgnoreCase));
